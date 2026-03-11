@@ -24,6 +24,7 @@ async def lifespan(app: FastAPI):
                 password=os.getenv("DB_PASSWORD", ""),
                 database=os.getenv("DB_NAME", "guessgame"),
                 port=int(os.getenv("DB_PORT", "3306"))
+                ssl_ca=os.getenv("MYSQL_SSL_CA", None)
             )
             cursor = db.cursor()
             with open("init.sql") as f:
